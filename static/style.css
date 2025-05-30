@@ -1,0 +1,149 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #eaf6f6;
+  color: #333;
+  margin: 0;
+  padding: 40px;
+}
+
+h1, h2 {
+  text-align: center;
+  color: #00796b;
+  text-shadow: 1px 1px 1px #ccc;
+}
+
+form {
+  background: #ffffff;
+  padding: 20px;
+  margin: 20px auto;
+  border-radius: 12px;
+  max-width: 600px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+label, input, button {
+  font-size: 16px;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+  color: #004d40;
+}
+
+input[type="number"],
+input[type="file"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #26a69a;
+  color: white;
+  padding: 10px 16px;
+  margin: 5px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background 0.3s, transform 0.2s;
+}
+
+button:hover {
+  background-color: #00796b;
+  transform: scale(1.05);
+}
+
+button:active {
+  transform: scale(0.97);
+}
+
+hr {
+  border: none;
+  height: 1px;
+  background: #ccc;
+  margin: 40px 0;
+}
+
+img {
+  display: block;
+  margin: 10px auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.result {
+  background: #dcedc8;
+  border: 2px solid #c5e1a5;
+  border-radius: 10px;
+  padding: 15px;
+  text-align: center;
+  max-width: 600px;
+  margin: 20px auto;
+}
+
+.result p {
+  margin: 5px 0;
+}
+
+/* Bảng và bố cục chi tiết */
+.tables-container {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+
+.table-wrapper {
+  background-color: #ffffffcc;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 12px rgba(0,0,0,0.1);
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  text-align: center;
+}
+
+table, th, td {
+  border: 1px solid #aaa;
+}
+
+th {
+  background-color: #e0f7fa;
+  color: #006064;
+  font-weight: bold;
+}
+
+td {
+  padding: 6px 12px;
+}
+
+.tables-caption {
+  text-align: center;
+  margin-top: 20px;
+  background-color: #e3f2fd;
+  padding: 15px;
+  border-radius: 10px;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 0 10px rgba(0,0,0,0.08);
+}
+
+.tables-caption h3 {
+  color: #0277bd;
+  margin-bottom: 5px;
+}
+
+.tables-caption p {
+  font-size: 14px;
+  color: #333;
+}

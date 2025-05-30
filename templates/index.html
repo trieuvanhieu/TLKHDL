@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MNIST Digit Classifier</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <h1>🔢 Phân loại chữ viết tay (MNIST)</h1>
+  <h2>🧠 Mô hình đang sử dụng: RandomForestClassifier</h2>
+
+  <!-- Thông tin độ chính xác -->
+  <div class="result">
+    <h2>🎯 Độ chính xác tổng thể: {{ accuracy }}%</h2>
+    <form method="post">
+      <button type="submit" name="draw_cm">📊 Vẽ biểu đồ confusion matrix</button>
+    </form>
+  </div>
+
+  <!-- Độ chính xác từng chữ số & Classification Report -->
+  {% if per_class_accuracy %}
+    <div class="tables-container">
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr><th>Chữ số</th><th>Độ chính xác (%)</th></tr>
+          </thead>
+          <tbody>
+            {% for digit, acc in per_class_accuracy.items() %}
+              <tr>
+                <td>{{ digit }}</td>
+                <td>{{ "%.2f"|format(acc * 100) }}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+
+      <div class="table-wrapper">
+        {{ classification_report|safe }}
+      </div>
+    </div>
+
+    <!-- Tiêu đề & mô tả -->
+    <div class="tables-caption">
+      <h3>📌 Thống kê chi tiết kết quả phân loại</h3>
+      <p>
+        Bảng trái: độ chính xác theo từng chữ số (0–9).<br>
+        Bảng phải: precision (độ chính xác), recall (khả năng phát hiện), F1-score (trung bình), accuracy (độ chính xác tổng thể), macro avg (trung bình không trọng số), weighted avg (trung bình có trọng số).
+      </p>
+    </div>
+  {% endif %}
+
+  <!-- Phân loại ảnh tải lên -->
+  <form method="post" enctype="multipart/form-data">
+    <h2>🖼️ Phân loại ảnh bằng cách tải lên</h2>
+    <input type="file" name="image" accept="image/*" required>
+    <button type="submit" name="upload">📥 Phân loại từ ảnh tải lên</button>
+  </form>
+
+  <!-- Kết quả dự đoán -->
+  {% if prediction is not none %}
+    <div class="result">
+      <h2>✅ Kết quả dự đoán: {{ prediction }}</h2>
+      {% if image_url %}
+        <h3>🖼️ Ảnh bạn đã gửi:</h3>
+        <img src="{{ url_for('static', filename=image_url.split('static/')[-1]) }}" width="200">
+      {% endif %}
+    </div>
+  {% endif %}
+
+  <!-- Confusion Matrix -->
+  {% if show_cm %}
+    <h2>📊 Biểu đồ confusion matrix</h2>
+    <img src="{{ url_for('static', filename='confusion_matrix.png') }}" width="600">
+  {% endif %}
+</body>
+</html>
